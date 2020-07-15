@@ -49,8 +49,10 @@ public class PlayerController : MonoBehaviour {
     private void Die() {
         animator.SetTrigger("Die");
         playerAudio.clip = deathClip;
+        playerAudio.Play();
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
+        GameManager.instance.OnPlayerDead();
     }
 
     private void OnCollisonEnter2D(Collision2D collision) {
